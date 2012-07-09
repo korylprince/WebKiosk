@@ -47,7 +47,7 @@ public class ValaBrowser : Window {
     private void loaded () {
         //Load this javascript on page load
         //this.webview.execute_script("$('body').show()");
-        return
+        return;
     }
 
     public static int main (string[] args) {
