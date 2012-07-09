@@ -1,4 +1,7 @@
 #!/usr/bin/python
+
+# This is not the more object oriented approach as the other with classes and such
+
 from gi.repository import Gtk as gtk, WebKit as webkit
 
 def on_quit(widget):
