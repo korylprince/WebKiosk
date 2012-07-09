@@ -1,4 +1,5 @@
 exec xsetroot -cursor_name left_ptr #set cursor correctly
+exec gnome-settings-daemon
 exec python /opt/com.py #call program
 # unbind *all* keys
 unbind a

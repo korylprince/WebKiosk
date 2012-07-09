@@ -21,6 +21,7 @@ public class ValaBrowser : Window {
 
     private void create_widgets () {
         var toolbar = new Toolbar ();
+        toolbar.set_style(ToolbarStyle.BOTH);
         toolbar.get_style_context().add_class(STYLE_CLASS_PRIMARY_TOOLBAR);
         this.button = new ToolButton(null,"Refresh");
         toolbar.add (this.button);

@@ -22,6 +22,7 @@ class ValaBrowser : Window
 
     def create_widgets () : void
         var toolbar = new Toolbar ()
+        toolbar.set_style(ToolbarStyle.BOTH)
         toolbar.get_style_context().add_class(STYLE_CLASS_PRIMARY_TOOLBAR)
         this.button = new ToolButton(null,"Refresh")
         toolbar.add (this.button)
