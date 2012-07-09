@@ -37,7 +37,7 @@ Where t is the number of seconds to wait.
 
 A bug in Gtk causes the program to crash whenever the toolbar is double-clicked under certain window managers including ratpoison.
 
-This is part of the reason for using com.py. A bug report has been filed [here](https://bugzilla.gnome.org/showb_ug.cgi?id=679468).
+This is part of the reason for using com.py. A bug report has been filed [here](https://bugzilla.gnome.org/show_bug.cgi?id=679468).
 
 #License#
 
