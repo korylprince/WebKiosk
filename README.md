@@ -5,6 +5,12 @@ The .py, .vala, and .gs files are the same program written in Python, Vala, and 
 
 https://github.com/korylprince/WebKiosk
 
+#Compiling#
+
+You will need the libgtk+-3-dev and libwebkitgtk-3.0-dev packages installed. Next go to your vapi folder - /usr/share/vala-0.14/vapi/ and copy webkit-1.0.deps to webkitgtk-3.0.deps and webkit-1.0.vapi to webkitgtk-3.0.vapi. Finally, edit webkitgtk-3.0.deps and change gdk and gtk to 3.0.
+
+To compile run the command in the top of the source file.
+
 #Installing#
 
 First log in to Ubuntu and set your Network and Power settings. I also recommend you install an ssh server so you can get back into the machine.
@@ -38,6 +44,8 @@ Where t is the number of seconds to wait.
 A bug in Gtk causes the program to crash whenever the toolbar is double-clicked under certain window managers including ratpoison.
 
 This is part of the reason for using com.py. A bug report has been filed [here](https://bugzilla.gnome.org/show_bug.cgi?id=679468).
+
+If we run gnome-settings-daemon, the program will not crash any longer (this also keeps the power settings.)
 
 #License#
 
