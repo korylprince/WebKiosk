@@ -22,6 +22,8 @@ To set up autologin, copy ratpoison.desktop to /usr/share/xsessions/ and copy li
 
 To disable the ttys when pressing Ctrl+F1-6, create files /etc/init/tty[1-6].override that contain the text "manual". (That's one file for each tty.)
 
+You can follow the steps in the answer [here](http://askubuntu.com/questions/115709/using-ctrl-alt-f1) to disable the ctrl+alt+fn keys altogether (so that no one can switch to a blank VT.)
+
 This creates a fairly secure Kiosk environment, unless, of course, users have access to the power where they could get access to recovery mode with Grub. Besides that no commands cannot be run, and the computer cannot be started.
 
 #Usage#
