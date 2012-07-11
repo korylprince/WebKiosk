@@ -9,6 +9,7 @@ class ValaBrowser : Window
 
     webview: WebView
     button: ToolButton
+    spinner: Spinner
 
     init 
         window_position = WindowPosition.CENTER
@@ -27,9 +28,22 @@ class ValaBrowser : Window
         this.button = new ToolButton(null,"Refresh")
         toolbar.add (this.button)
         this.webview = new WebView ()
+        this.spinner =  new Spinner()
+        this.spinner.set_margin_left(5)
+        this.spinner.set_margin_right(5)
+        this.spinner.set_margin_bottom(5)
+        this.spinner.set_margin_top(5)
+        this.spinner.start()
+        var fixed = new Fixed()
+        fixed.add(this.spinner)
+        fixed.set_halign(Align.START)
+        fixed.set_valign(Align.END)
+        var overlay = new Overlay()
+        overlay.add(this.webview)
+        overlay.add_overlay(fixed)
         var vbox = new Box (Orientation.VERTICAL, 0)
         vbox.pack_start (toolbar, false, true, 0)
-        vbox.pack_start(webview,true,true,0)
+        vbox.pack_start(overlay,true,true,0)
         add (vbox)
     
 
@@ -37,6 +51,7 @@ class ValaBrowser : Window
         this.destroy.connect (Gtk.main_quit)
         this.button.clicked.connect (this.start)
         this.webview.document_load_finished.connect(this.loaded)
+        this.webview.load_started.connect(this.started)
     
 
     def start () : void
@@ -46,10 +61,12 @@ class ValaBrowser : Window
     
     
     def loaded () : void
+        this.spinner.hide()
         //Use the next command to run some javascript on page load
         //this.webview.execute_script("$('body').show()")
-        return
-    
+
+    def started () : void
+        show_all()
 
     def main (arg: array of string[]) : int
         Gtk.init (ref arg)

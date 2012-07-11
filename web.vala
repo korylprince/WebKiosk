@@ -7,6 +7,7 @@ public class ValaBrowser : Window {
 
     private WebView webview;
     private ToolButton button;
+    private Spinner spinner;
 
     public ValaBrowser () {
         window_position = WindowPosition.CENTER;
@@ -26,9 +27,22 @@ public class ValaBrowser : Window {
         this.button = new ToolButton(null,"Refresh");
         toolbar.add (this.button);
         this.webview = new WebView ();
+        this.spinner =  new Spinner();
+        this.spinner.set_margin_left(5);
+        this.spinner.set_margin_right(5);
+        this.spinner.set_margin_bottom(5);
+        this.spinner.set_margin_top(5);
+        this.spinner.start();
+        var fixed = new Fixed();
+        fixed.add(this.spinner);
+        fixed.set_halign(Align.START);
+        fixed.set_valign(Align.END);
+        var overlay = new Overlay();
+        overlay.add(this.webview);
+        overlay.add_overlay(fixed);
         var vbox = new Box (Orientation.VERTICAL, 0);
         vbox.pack_start (toolbar, false, true, 0);
-        vbox.pack_start(webview,true,true,0);
+        vbox.pack_start(overlay,true,true,0);
         add (vbox);
     }
 
@@ -36,6 +50,7 @@ public class ValaBrowser : Window {
         this.destroy.connect (Gtk.main_quit);
         this.button.clicked.connect (this.start);
         this.webview.document_load_finished.connect(this.loaded);
+        this.webview.load_started.connect(this.started);
     }
 
     public void start () {
@@ -45,9 +60,13 @@ public class ValaBrowser : Window {
     }
 
     private void loaded () {
+        this.spinner.hide();
         //Load this javascript on page load
         //this.webview.execute_script("$('body').show()");
-        return;
+    }
+
+    private void started () {
+        show_all();
     }
 
     public static int main (string[] args) {
